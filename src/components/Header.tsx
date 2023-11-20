@@ -3,6 +3,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { AiOutlineMenu } from "react-icons/ai";
 import Image from "next/image";
 import React, { useState } from "react";
+import Link from "next/link";
 
 const Header = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
@@ -15,7 +16,9 @@ const Header = () => {
   const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
   return (
     <div className="container mx-auto p-5 py-0 h-[93px] flex justify-between items-center ">
-      <Image width={183} height={32} src="/logo.svg" alt="" />
+      <Link href={"/"}>
+        <Image width={183} height={32} src="/logo.svg" alt="" />
+      </Link>
       {status === "unauthenticated" && (
         <button
           className="text-primary text-sm font-semibold"
