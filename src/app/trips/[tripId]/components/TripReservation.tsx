@@ -4,11 +4,13 @@ import Button from "@/components/Button";
 import DatePicker from "@/components/DatePicker";
 import Input from "@/components/Input";
 import { Trip } from "@prisma/client";
-import { error } from "console";
 import { Controller, useForm } from "react-hook-form";
 
 interface TripReservatinProp {
   trip: Trip;
+  tripStartDate: Date;
+  tripEndDate: Date;
+  maxGuests: Number;
 }
 
 interface TripReservationForms {
@@ -17,17 +19,27 @@ interface TripReservationForms {
   endDate: Date;
 }
 
-const TripReservation = ({ trip }: TripReservatinProp) => {
+const TripReservation = ({
+  trip,
+  tripStartDate,
+  tripEndDate,
+}: TripReservatinProp) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     control,
+    watch,
   } = useForm<TripReservationForms>();
 
   function onSubmit(data: TripReservationForms) {
     console.log(data);
   }
+
+  console.log(tripStartDate, tripEndDate);
+
+  const startDate = watch("startDate");
+
   return (
     <div className="flex flex-col px-5">
       <div className="flex gap-2">
@@ -48,6 +60,7 @@ const TripReservation = ({ trip }: TripReservatinProp) => {
               errorMessage={errors.startDate?.message}
               placeholderText="Data de Início"
               className="w-full"
+              minDate={tripStartDate}
             />
           )}
         />
@@ -69,6 +82,8 @@ const TripReservation = ({ trip }: TripReservatinProp) => {
               errorMessage={errors.endDate?.message}
               placeholderText="Data final"
               className="w-full"
+              maxDate={tripEndDate}
+              minDate={startDate ?? tripStartDate}
             />
           )}
         />
