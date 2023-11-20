@@ -42,9 +42,9 @@ const Header = () => {
             src={data.user?.image!}
           />
           {menuIsOpen && (
-            <div className="absolute top-14 left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center">
+            <div className="absolute top-14 left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center z-10">
               <button
-                className="text-primary text-sm font-semibold"
+                className="text-primary text-sm font-semibold "
                 onClick={handlerLogoutClick}
               >
                 Logout
