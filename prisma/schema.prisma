@@ -64,10 +64,12 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isAdmin      Boolean @default(false)
 }
 
 model User {
   id            String            @id @default(cuid())
+  admin         Boolean           @default(false)
   name          String?
   email         String?           @unique
   emailVerified DateTime?
