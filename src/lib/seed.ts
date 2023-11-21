@@ -1,4 +1,4 @@
-import { prismaClient as prisma } from "./prisma";
+import { prisma } from "./prisma";
 
 async function main() {
   await prisma.trip.createMany({

@@ -16,7 +16,7 @@ const Header = () => {
   const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
   return (
     <div className="container mx-auto p-5 py-0 h-[93px] flex justify-between items-center ">
-      <Link href={"/"}>
+      <Link href="/">
         <Image width={183} height={32} src="/logo.svg" alt="" />
       </Link>
       {status === "unauthenticated" && (

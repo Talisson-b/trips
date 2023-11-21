@@ -1,4 +1,4 @@
-import { prismaClient } from "@/lib/prisma";
+import { prisma } from "@/lib/prisma";
 import TripHeader from "./components/TripHeader";
 import TripReservation from "./components/TripReservation";
 import TripDescription from "./components/TripDescription";
@@ -6,7 +6,7 @@ import TripHighlights from "./components/TripHighlights";
 import TripLocation from "./components/TripLocation";
 
 const getTripDetails = async (tripId: string) => {
-  const trip = await prismaClient.trip.findUnique({
+  const trip = await prisma.trip.findUnique({
     where: {
       id: tripId,
     },
