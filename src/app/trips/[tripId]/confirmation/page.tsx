@@ -26,21 +26,25 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
     async function fetchTrip() {
       const response = await fetch(`http://localhost:3000/api/trips/check`, {
         method: "POST",
-        body: Buffer.from(
-          JSON.stringify({
-            startDate: searchParams.get("startDate"),
-            endDate: searchParams.get("endDate"),
-            tripId: params.tripId,
-          })
-        ),
+        body: JSON.stringify({
+          startDate: searchParams.get("startDate"),
+          endDate: searchParams.get("endDate"),
+          tripId: params.tripId,
+        }),
       });
-      const { trip, totalPrice } = await response.json();
-      setTotalPrice(totalPrice);
-      setTrip(trip);
+
+      const res = await response.json();
+
+      if (res.error) {
+        return router.push("/");
+      }
+
+      setTotalPrice(res.totalPrice);
+      setTrip(res.trip);
     }
 
     fetchTrip();
-  }, [status]);
+  }, [status, params.tripId, router, searchParams]);
 
   if (!trip) return null;
 
