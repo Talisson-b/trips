@@ -21,7 +21,7 @@ model Trip {
   description         String
   coverImage          String
   imagesUrl           String[]
-  highlights          String[]
+  highlights          String[]          @default(["Café da manhã incluso", "Piscina", "Wifi grátis", "Estacionamento grátis", "Vista paradisíaca", "Luxuoso"])
   maxGuests           Int
   reservations        TripReservation[]
   countryCode         String
@@ -37,6 +37,7 @@ model TripReservation {
   startDate DateTime
   endDate   DateTime
   totalPaid Decimal  @db.Decimal(8, 2)
+  guests    Int      @default(5)
 }
 
 model Account {
