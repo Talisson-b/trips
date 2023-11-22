@@ -10,6 +10,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import ReactCountryFlag from "react-country-flag";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
   const [trip, setTrip] = useState<Trip | null>();
@@ -17,6 +18,8 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
   const { status, data } = useSession();
   const router = useRouter();
   const searchParams = useSearchParams();
+
+  console.log(data?.user);
 
   if (status === "unauthenticated") {
     router.push("/");
@@ -47,6 +50,30 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
   }, [status, params.tripId, router, searchParams]);
 
   if (!trip) return null;
+
+  async function handleBuyClick() {
+    const response = await fetch(
+      `http://localhost:3000/api/trips/reservation`,
+      {
+        method: "POST",
+        body: Buffer.from(
+          JSON.stringify({
+            tripId: params.tripId,
+            startDate: searchParams.get("startDate"),
+            endDate: searchParams.get("endDate"),
+            guests: Number(searchParams.get("guests")),
+            totalPaid: totalPrice,
+            userId: data?.user.id,
+          })
+        ),
+      }
+    );
+    if (!response.ok) {
+      return toast.error("Ocorreu um erro ao realizar a reserva!");
+    }
+    router.push("/");
+    toast.success("Reserva realizada com sucesso");
+  }
 
   const startDate = new Date(searchParams.get("startDate") as string);
   const endDate = new Date(searchParams.get("endDate") as string);
@@ -102,7 +129,9 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
         <h3 className="font-semibold mt-5">Hóspedes</h3>
         <p>{guests} hóspedes</p>
 
-        <Button className="mt-5">Finalizar compra</Button>
+        <Button onClick={handleBuyClick} className="mt-5">
+          Finalizar compra
+        </Button>
       </div>
     </div>
   );
