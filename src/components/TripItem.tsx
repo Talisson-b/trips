@@ -10,13 +10,12 @@ interface TripItemProps {
 const TripItem = ({ trip }: TripItemProps) => {
   return (
     <Link href={`/trips/${trip.id}`}>
-      <div className="w-[300px]">
+      <div className="w-[300px] h-[300px]">
         <div className="flex flex-col">
-          <div className="w-[280px]">
+          <div className="w-full h-[200px] relative">
             <Image
               src={trip.coverImage}
-              width={280}
-              height={280}
+              fill
               alt={trip.name}
               className="rounded-lg object-cover shadow-md"
             />

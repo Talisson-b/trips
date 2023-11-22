@@ -233,9 +233,7 @@ const AddToNewTrips = () => {
           placeholder="Data final"
         />
       </div>
-      <h3 className="font-semibold mb-2 text-primaryDarker text-xsm mt-4">
-        Destaques
-      </h3>
+
       {/* <HighLights /> */}
       <Button onClick={handleSubmit(onSubmit)} className="w-full mt-10">
         Adicionar
