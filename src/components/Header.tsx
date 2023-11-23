@@ -26,7 +26,7 @@ const Header = () => {
 
   return (
     <div className="container mx-auto p-5 py-0 h-[93px] flex justify-between items-center ">
-      <Link href="/">
+      <Link href="/" onClick={() => setMenuIsOpen(false)}>
         <Image width={183} height={32} src="/logo.svg" alt="" />
       </Link>
       {status === "unauthenticated" && (
@@ -92,7 +92,10 @@ const Header = () => {
           {menuIsOpen && (
             <>
               <div className="absolute top-14 left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center z-10">
-                <Link href="/my-trips">
+                <Link
+                  href="/my-trips"
+                  onClick={() => setMenuIsOpen(!menuIsOpen)}
+                >
                   <button className="text-primary text-sm font-semibold ">
                     Minhas viagens
                   </button>
