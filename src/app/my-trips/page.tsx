@@ -18,9 +18,7 @@ const MyTrips = () => {
   const userId = data?.user.id;
 
   const fetchReservations = async () => {
-    const response = await fetch(
-      `http://localhost:3000/api/user/${userId}/reservations`
-    );
+    const response = await fetch(`/api/user/${userId}/reservations`);
     const res = await response.json();
     setReservations(res);
   };

@@ -19,7 +19,7 @@ const AddToNewTrips = () => {
 
   async function onSubmit(data: any) {
     const urlImages = [data.imageOne, data.imageTwo, data.imageTree];
-    const response = await fetch(`http://localhost:3000/api/trips/create`, {
+    const response = await fetch(`/api/trips/create`, {
       method: "POST",
       body: JSON.stringify({
         imagesUrl: urlImages,
