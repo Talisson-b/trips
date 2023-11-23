@@ -56,7 +56,10 @@ const Header = () => {
             <>
               <div className="absolute top-14 left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center z-10">
                 <Link href="/my-trips">
-                  <button className="text-primary text-sm font-semibold ">
+                  <button
+                    onClick={() => setMenuIsOpen(!menuIsOpen)}
+                    className="text-primary text-sm font-semibold "
+                  >
                     Minhas viagens
                   </button>
                 </Link>
@@ -92,11 +95,11 @@ const Header = () => {
           {menuIsOpen && (
             <>
               <div className="absolute top-14 left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center z-10">
-                <Link
-                  href="/my-trips"
-                  onClick={() => setMenuIsOpen(!menuIsOpen)}
-                >
-                  <button className="text-primary text-sm font-semibold ">
+                <Link href="/my-trips">
+                  <button
+                    onClick={() => setMenuIsOpen(!menuIsOpen)}
+                    className="text-primary text-sm font-semibold "
+                  >
                     Minhas viagens
                   </button>
                 </Link>
