@@ -22,10 +22,10 @@ const UserReservationItem = ({
 }: UserReservationItemProps) => {
   const { trip } = reservation;
   const router = useRouter();
-  const startDate = format(new Date(trip.startDate), "dd 'de' MMMM", {
+  const startDate = format(new Date(reservation.startDate), "dd 'de' MMMM", {
     locale: ptBR,
   });
-  const endDate = format(new Date(trip.endDate), "dd 'de' MMMM", {
+  const endDate = format(new Date(reservation.endDate), "dd 'de' MMMM", {
     locale: ptBR,
   });
 
@@ -36,6 +36,8 @@ const UserReservationItem = ({
         method: "DELETE",
       }
     );
+
+    console.log(reservation.startDate);
 
     if (!res.ok) {
       return toast.error("Ocorreu um erro ao cancelar a reserva!");

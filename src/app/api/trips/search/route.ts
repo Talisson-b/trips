@@ -23,7 +23,7 @@ const generateSearchQuery = (text: string, startDate?: string | null, budget?: s
     AND: [],
   };
 
-  // if (startDate !== "Date" && startDate !== "null") {
+  // if (startDate !== "undefined" && startDate !== "null") {
   //   searchQuery = {
   //     ...searchQuery,
   //     AND: [
@@ -54,26 +54,26 @@ const generateSearchQuery = (text: string, startDate?: string | null, budget?: s
 
   return searchQuery;
 };
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url)
 
-  const text = searchParams.get('text')
-  const startDate = searchParams.get('startDate')
-  const budget = searchParams.get('budget')
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+
+  const text = searchParams.get("text");
+  const startDate = searchParams.get("startDate");
+  const budget = searchParams.get("budget");
+
   if (!text) {
     return new NextResponse(
       JSON.stringify({
-        status: 400,
-        body: {
-          message: 'Misssing text'
-        }
-      })
-    )
+        message: "Missing text parameter",
+      }),
+      { status: 400 }
+    );
   }
 
   const trips = await prisma.trip.findMany({
     where: generateSearchQuery(text, startDate, budget),
   });
 
-  return new NextResponse(JSON.stringify(trips), { status: 200 })
+  return new NextResponse(JSON.stringify(trips), { status: 200 });
 }

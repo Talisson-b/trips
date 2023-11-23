@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const QuickSearch = () => {
   return (
@@ -12,49 +13,64 @@ const QuickSearch = () => {
       </div>
 
       <div className="flex justify-between mt-5">
-        <div className="flex flex-col items-center gap-1">
-          <Image
-            className="w-[30px] h-[30px]"
-            width={30}
-            height={30}
-            alt="Hotels"
-            src="./hotel.svg"
-          />
-          <p className="text-sm tetx-grayPrimary">Hotéis</p>
-        </div>
+        <Link
+          href={`/trips/search?text=hotel&startDate=${null}&budget=${null}`}
+        >
+          <div className="flex flex-col items-center gap-1">
+            <Image
+              className="w-[30px] h-[30px]"
+              width={30}
+              height={30}
+              alt="Hotels"
+              src="./hotel.svg"
+            />
+            <p className="text-sm tetx-grayPrimary">Hotéis</p>
+          </div>
+        </Link>
 
-        <div className="flex flex-col items-center gap-1">
-          <Image
-            className="w-[30px] h-[30px]"
-            width={30}
-            height={30}
-            alt="Chalés"
-            src="./chale.svg"
-          />
-          <p className="text-sm tetx-grayPrimary">Chalés</p>
-        </div>
+        <Link
+          href={`/trips/search?text=chalé&startDate=${null}&budget=${null}`}
+        >
+          <div className="flex flex-col items-center gap-1">
+            <Image
+              className="w-[30px] h-[30px]"
+              width={30}
+              height={30}
+              alt="Chalés"
+              src="./chale.svg"
+            />
+            <p className="text-sm tetx-grayPrimary">Chalés</p>
+          </div>
+        </Link>
+        <Link
+          href={`/trips/search?text=fazendas&startDate=${null}&budget=${null}`}
+        >
+          <div className="flex flex-col items-center gap-1">
+            <Image
+              className="w-[30px] h-[30px]"
+              width={30}
+              height={30}
+              alt="Hotels"
+              src="./fazenda.svg"
+            />
+            <p className="text-sm tetx-grayPrimary">Fazendas</p>
+          </div>
+        </Link>
 
-        <div className="flex flex-col items-center gap-1">
-          <Image
-            className="w-[30px] h-[30px]"
-            width={30}
-            height={30}
-            alt="Hotels"
-            src="./fazenda.svg"
-          />
-          <p className="text-sm tetx-grayPrimary">Fazendas</p>
-        </div>
-
-        <div className="flex flex-col items-center gap-1">
-          <Image
-            className="w-[30px] h-[30px]"
-            width={30}
-            height={30}
-            alt="Hotels"
-            src="./pousada.svg"
-          />
-          <p className="text-sm tetx-grayPrimary">Pousadas</p>
-        </div>
+        <Link
+          href={`/trips/search?text=pousadas&startDate=${null}&budget=${null}`}
+        >
+          <div className="flex flex-col items-center gap-1">
+            <Image
+              className="w-[30px] h-[30px]"
+              width={30}
+              height={30}
+              alt="Hotels"
+              src="./pousada.svg"
+            />
+            <p className="text-sm tetx-grayPrimary">Pousadas</p>
+          </div>
+        </Link>
       </div>
     </div>
   );
