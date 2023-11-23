@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const req = await request.json();
-  console.log(req);
   const trip = await prisma.trip.create({
     data: {
       name: req.name,

@@ -19,8 +19,6 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  console.log(data?.user);
-
   if (status === "unauthenticated") {
     router.push("/");
   }

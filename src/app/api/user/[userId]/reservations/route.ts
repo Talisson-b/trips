@@ -19,6 +19,7 @@ export async function GET(request: Request, { params: { userId } }: { params: { 
     include: {
       trip: true
     }
+
   })
   return new NextResponse(JSON.stringify(reservations), { status: 200 })
 }
