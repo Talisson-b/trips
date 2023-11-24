@@ -12,10 +12,10 @@ const AddToNewTrips = () => {
   const router = useRouter();
   const { register, handleSubmit } = useForm();
 
-  if (!data?.user.admin) {
-    router.push("/");
-    return;
-  }
+  // if (!data?.user?.admin) {
+  //   router.push("/");
+  //   return;
+  // }
 
   async function onSubmit(data: any) {
     const urlImages = [data.imageOne, data.imageTwo, data.imageTree];

@@ -20,6 +20,8 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  console.log(data?.user);
+
   if (status === "unauthenticated") {
     router.push("/");
   }
@@ -62,6 +64,7 @@ const TripConfirmation = ({ params }: { params: { tripId: string } }) => {
         coverImage: trip?.coverImage,
         name: trip?.name,
         description: trip?.description,
+        userId: data?.user?.id,
       }),
     });
     if (!response.ok) {

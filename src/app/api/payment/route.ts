@@ -1,7 +1,8 @@
+import { authOptions } from '@/lib/auth'
 import { getServerSession } from 'next-auth'
 import { NextResponse } from 'next/server'
 import Stripe from 'stripe'
-import { authOptions } from '../auth/[...nextauth]/route'
+
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2023-10-16',
@@ -12,7 +13,9 @@ export async function POST(request: Request) {
   const useSession = await getServerSession(authOptions)
   const req = await request.json()
 
-  const { totalPrice, name, description, coverImage, tripId, startDate, endDate, guests } = req
+  const { totalPrice, name, description, coverImage, tripId, startDate, endDate, guests, userId } = req
+
+
 
   const session = await stripe.checkout.sessions.create({
     success_url: process.env.HOST_URL,
@@ -21,7 +24,7 @@ export async function POST(request: Request) {
       startDate,
       endDate,
       guests,
-      userId: useSession!.user.id!
+      userId,
     },
     line_items: [
       {
