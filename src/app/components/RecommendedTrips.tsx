@@ -19,7 +19,7 @@ const RecommendedTrips = async () => {
         </h2>
         <div className="w-full h-[1px] bg-grayLighter"></div>
       </div>
-      <div className="overflow-x-scroll flex items-center mt-5 gap-5">
+      <div className="overflow-x-scroll flex items-center mt-5 lg:mt-12 gap-5 lg:grid lg:grid-cols-3 lg:overflow-x-hidden">
         {data.map((item: Trip) => (
           <TripItem key={item.id} trip={item} />
         ))}

@@ -12,7 +12,7 @@ const QuickSearch = () => {
         <div className="w-full h-[1px] bg-grayLighter"></div>
       </div>
 
-      <div className="flex justify-between mt-5">
+      <div className="flex justify-between mt-5 lg:justify-center lg:gap-36">
         <Link
           href={`/trips/search?text=hotel&startDate=${null}&budget=${null}`}
         >
@@ -24,7 +24,7 @@ const QuickSearch = () => {
               alt="Hotels"
               src="./hotel.svg"
             />
-            <p className="text-sm tetx-grayPrimary">Hotéis</p>
+            <p className="text-sm lg:text-base tetx-grayPrimary">Hotéis</p>
           </div>
         </Link>
 
@@ -39,7 +39,7 @@ const QuickSearch = () => {
               alt="Chalés"
               src="./chale.svg"
             />
-            <p className="text-sm tetx-grayPrimary">Chalés</p>
+            <p className="text-sm lg:text-base tetx-grayPrimary">Chalés</p>
           </div>
         </Link>
         <Link
@@ -53,7 +53,7 @@ const QuickSearch = () => {
               alt="Hotels"
               src="./fazenda.svg"
             />
-            <p className="text-sm tetx-grayPrimary">Fazendas</p>
+            <p className="text-sm lg:text-base tetx-grayPrimary">Fazendas</p>
           </div>
         </Link>
 
@@ -68,7 +68,7 @@ const QuickSearch = () => {
               alt="Hotels"
               src="./pousada.svg"
             />
-            <p className="text-sm tetx-grayPrimary">Pousadas</p>
+            <p className="text-sm lg:text-base tetx-grayPrimary">Pousadas</p>
           </div>
         </Link>
       </div>
