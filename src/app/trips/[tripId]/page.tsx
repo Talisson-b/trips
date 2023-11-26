@@ -20,7 +20,7 @@ const TripDetails = async ({ params }: { params: { tripId: string } }) => {
   if (!trip) return null;
 
   return (
-    <div className="container mx-auto lg:px-16">
+    <div className="container mx-auto lg:px-16 lg:mt-10">
       <TripHeader trip={trip} />
       {/* RESERVA */}
       <div className="flex flex-col lg:flex-row lg:mt-12 lg:gap-20">

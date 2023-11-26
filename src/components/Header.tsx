@@ -25,7 +25,7 @@ const Header = () => {
   const handleMenuClick = () => setMenuIsOpen(!menuIsOpen);
 
   return (
-    <div className="container mx-auto p-5 py-0 h-[93px] flex justify-between items-center ">
+    <div className="container mx-auto p-5 py-0 h-[93px] flex justify-between items-center lg:border-b lg:border-grayLighter">
       <Link href="/" onClick={() => setMenuIsOpen(false)}>
         <Image width={183} height={32} src="/logo.svg" alt="" />
       </Link>
@@ -39,7 +39,7 @@ const Header = () => {
       )}
 
       {status === "authenticated" && data.user && !data.user.admin && (
-        <div className="flex items-center justify-between h-[48px] w-[90px] border border-solid border-grayLighter p-3 rounded-full relative">
+        <div className="flex items-center justify-between h-[48px] w-[90px] border border-solid border-grayLighter p-3 rounded-full relative ">
           <AiOutlineMenu
             className="cursor-pointer"
             size={16}
@@ -114,7 +114,7 @@ const Header = () => {
                 </button>
               </div>
 
-              <div className="absolute top-44 left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center z-10">
+              <div className="absolute top-[168px] left-0 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center z-10">
                 <button
                   className="text-primary text-sm font-semibold "
                   onClick={handlerLogoutClick}
