@@ -37,13 +37,15 @@ const MyTrips = () => {
         Minhas viagens
       </h1>
       {reservations.length > 0 ? (
-        reservations.map((reservation) => (
-          <UserReservationItem
-            key={reservation.id}
-            fetchReservations={fetchReservations}
-            reservation={reservation}
-          />
-        ))
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-5">
+          {reservations.map((reservation) => (
+            <UserReservationItem
+              key={reservation.id}
+              reservation={reservation}
+              fetchReservations={fetchReservations}
+            />
+          ))}
+        </div>
       ) : (
         <div className="flex flex-col">
           <p className="font-medium text-primaryDarker mt-2">
